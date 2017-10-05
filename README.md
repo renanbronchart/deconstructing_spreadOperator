@@ -1,12 +1,42 @@
-```…``` en ES6
-===================
-### Table of contents
-
 Décomposition, Spread Operator & rest parameter en ES6
+===================
+
 -------------
 
-----------
+### Table des matières
 
+   * [Décomposition, Spread Operator &amp; rest parameter en ES6](#décomposition-spread-operator--rest-parameter-en-es6)
+         * [Table des matières](#table-des-matières)
+      * [Trois petits points](#trois-petits-points)
+      * [La décomposition (destructuring)](#la-décomposition-destructuring)
+      * [Décomposition d'un tableau](#décomposition-dun-tableau)
+         * [Comment assigner les variables d'un tableau à des varaibles ?](#comment-assigner-les-variables-dun-tableau-à-des-varaibles-)
+               * [<strong>ES5</strong>](#es5)
+               * [<strong>ES6</strong>](#es6)
+         * [Comment récupérer le premier et le troisième élément de mon tableau ?](#comment-récupérer-le-premier-et-le-troisième-élément-de-mon-tableau-)
+               * [<strong>ES5</strong>](#es5-1)
+               * [<strong>ES6</strong>](#es6-1)
+         * [Comment assigner les valeurs d'un tablau à des variables avec des valeurs par défault ?](#comment-assigner-les-valeurs-dun-tablau-à-des-variables-avec-des-valeurs-par-défault-)
+               * [<strong>ES5</strong>](#es5-2)
+               * [<strong>ES6</strong>](#es6-2)
+         * [Comment copier un tableau sans avoir de référence entre les deux, pour garder l'immutabilité de nos tableaux ?](#comment-copier-un-tableau-sans-avoir-de-référence-entre-les-deux-pour-garder-limmutabilité-de-nos-tableaux-)
+               * [<strong>ES5</strong>](#es5-3)
+               * [<strong>ES6</strong>](#es6-3)
+         * [Comment manipuler les tableaux dans tous les sens, avec push, unshift, concat et autres...](#comment-manipuler-les-tableaux-dans-tous-les-sens-avec-push-unshift-concat-et-autres)
+               * [<strong>ES5</strong>](#es5-4)
+               * [<strong>ES6</strong>](#es6-4)
+               * [On voit clairement, qu'avec la décomposition en es6, appliquer des methodes sur les tableaux est beaucoup plus simple, et plus lisible. Tout ça grâce à trois petits points ...](#on-voit-clairement-quavec-la-décomposition-en-es6-appliquer-des-methodes-sur-les-tableaux-est-beaucoup-plus-simple-et-plus-lisible-tout-ça-grâce-à-trois-petits-points-)
+         * [Comment sortir le premier élément du tableau en laissant le reste des éléments dans un tableau.](#comment-sortir-le-premier-élément-du-tableau-en-laissant-le-reste-des-éléments-dans-un-tableau)
+               * [<strong>ES5</strong>](#es5-5)
+               * [<strong>ES6</strong>](#es6-5)
+         * [Attention au scope de la décomposition](#attention-au-scope-de-la-décomposition)
+               * [<strong>Exemple</strong>](#exemple)
+      * [La décomposition des objets](#la-décomposition-des-objets)
+            * [Exemple en ES5](#exemple-en-es5)
+            * [Exemple en ES6](#exemple-en-es6)
+      * [Le rest parameter](#le-rest-parameter)
+            * [Exemple en ES5](#exemple-en-es5-1)
+            * [Exemple en ES6](#exemple-en-es6-1)
 
 Trois petits points
 -------------
@@ -15,8 +45,9 @@ Les trois petits points (...) ne sont pas un opérateur commun en programmation 
 
 Les trois petits points sont en fait deux choses distinctes, le **rest parameter** et le **spread operator.**
 
+**[⬆ Retour en haut](#table-des-matières)**
 
-La décomposition (destructuring) d'un Array
+La décomposition (destructuring)
 -------------
 
 La **décomposition** consiste à "décomposer" les structures complexes (tableau, objet) pour en extraire les valeurs, les décomposer en plusieurs valeurs.
@@ -25,9 +56,10 @@ L'intérêt en ES6 est de rendre ce genre de manipulation plus **simple**, le co
 
 Pour chaque exemple nous allons vous montrer une comparaison entre la syntaxe en **ES5** et en **ES6**.
 
-### Décomposition d'un tableau
+## Décomposition d'un tableau
+-------------
 
-#### Comment assigner les variables d'un tableau à des varaibles ?
+### Comment assigner les variables d'un tableau à des varaibles ?
 
 ##### **ES5**
 
@@ -55,9 +87,9 @@ console.log(chien, chat, cheval) // Hugo Enora Renan
 
 Le résultat est le même mais avec la décomposition on gagne en **rapidité d'exécution** et en **lisibilité**.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ Retour en haut](#table-des-matières)**
 
-#### Comment récupérer le premier et le troisième élément de mon tableau ?
+### Comment récupérer le premier et le troisième élément de mon tableau ?
 
 ##### **ES5**
 En ES5 on doit récupérer le premier et le troisième éléments du tableau avec leur index.
@@ -79,9 +111,9 @@ const [chien,,, singe] = animals
 
 // console.log(chien, singe) // Hugo Theo
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ Retour en haut](#table-des-matières)**
 
-#### Comment assigner les valeurs d'un tablau à des variables avec des valeurs par défault ?
+### Comment assigner les valeurs d'un tablau à des variables avec des valeurs par défault ?
 
 ##### **ES5**
 ```
@@ -103,9 +135,9 @@ const [chien = 'Hugo', chat = 'Enora', singe = 'Theo'] = animals
 console.log(chien, chat, singe) // François, Arthur, Theo
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ Retour en haut](#table-des-matières)**
 
-#### Comment copier un tableau sans avoir de référence entre les deux, pour garder l'immutabilité de nos tableaux ?
+### Comment copier un tableau sans avoir de référence entre les deux, pour garder l'immutabilité de nos tableaux ?
 
 ##### **ES5**
 
@@ -133,7 +165,11 @@ newFriends.push('enora')
 console.log(newFriends); // ['renan', 'hugo', 'enora']
 console.log(friends);  // ['renan', 'hugo'] (inchangé)
 ```
-#### Comment manipuler les tableaux dans tous les sens, avec push, unshift, concat et autres...
+
+**[⬆ Retour en haut](#table-des-matières)**
+
+
+### Comment manipuler les tableaux dans tous les sens, avec push, unshift, concat et autres...
 
 ##### **ES5**
 
@@ -168,7 +204,7 @@ console.log(friends);  // ['renan', 'hugo'] (inchangé)
   // method concat
 
   var bestFriends = ['camille', 'amine'];
-  // On ajoute les éléments de arr2 après ceux de arr1
+  // On ajoute les éléments de bestFriends après ceux de newBestFriends
   var newBestFriends = friends.concat(newBestFriends);
 
   console.log(newBestFriends) // ['daniel', 'christopher', 'enora', 'julien', 'alexandre', 'hugo', 'theo', 'renan', 'camille', 'amine'];
@@ -214,7 +250,13 @@ let newBestFriends = [...friends, ...bestFriends];
 
 console.log(newBestFriends) // ['daniel', 'christopher', 'enora', 'julien', 'alexandre', 'hugo', 'theo', 'renan', 'camille', 'amine']
 ```
-#### Comment sortir le premier élément du tableau en laissant le reste des éléments dans un tableau.
+
+##### On voit clairement, qu'avec la décomposition en es6, appliquer des methodes sur les tableaux est beaucoup plus simple, et plus lisible. Tout ça grâce à trois petits points ...
+
+**[⬆ Retour en haut](#table-des-matières)**
+
+
+### Comment sortir le premier élément du tableau en laissant le reste des éléments dans un tableau.
 
 ##### **ES5**
 
@@ -229,9 +271,11 @@ singes.shift(); // On retire le premier élément
 
 console.log(type) // 'singes'
 console.log(singes) // ['Enora', 'Renan', 'Theo']
-
-// Cette méthode est fastidieuse et nous sommes obligé d'utiliser Object.assign pour garder le premier tableau immutable.
 ```
+
+Cette méthode est fastidieuse et nous sommes obligé d'utiliser Object.assign pour garder le premier tableau immutable.
+
+
 ##### **ES6**
 
 ```
@@ -244,7 +288,10 @@ console.log(singes) // ['Enora', 'Renan', 'Theo']
 // En es6 le spread operateur garde notre premier tableau immutable, et le code est beaucoup plus lisible et rapide.
 ```
 
-#### Attention au scope de la décomposition
+**[⬆ Retour en haut](#table-des-matières)**
+
+
+### Attention au scope de la décomposition
 
 Lorsqu'on utilise la décomposition, par exemple pour copier un tableau, elle ne s'applique qu'au premier niveau de profondeur.
 C'est à dire que la décomposition n'est pas effective sur des tableaux qui seraient présent à l'interieur de notre tableau copié.
@@ -267,7 +314,9 @@ On voit bien que dans cet exemple, le tableau au second niveau est mutable, il y
 En ES5 le problème persistera car même avec la method Object.assign(), on obtiendra le même résultat.
 
 
-La décomposition des objets
+**[⬆ Retour en haut](#table-des-matières)**
+
+## La décomposition des objets
 -------------
 
 La décomposition des objets est relativement la même que celle des tableaux avec quelques spécificités supplémentaires. La principale difference entre ES5 et ES6 est **la syntaxe qui est simplifiée en ES6**.
@@ -310,7 +359,10 @@ UX // 14
 
 ```
 
-Le rest parameter
+**[⬆ Retour en haut](#table-des-matières)**
+
+
+## Le rest parameter
 -------------
 
 **Le rest parameter** sert à stocker une liste indéfinie de valeurs sous forme de tableau. On dit paramètre de reste car il est passé en paramètre d'une fonction. Il est possible de ne pas insérer tous les arguments dans le paramètre rest.
@@ -353,6 +405,8 @@ Résultat pour les deux cas :
 
 Qu'on écrive en ES5 ou ES6, le résultat est le même mais la syntaxe est différente. Cependant, en ES6 on a une syntaxe plus courte donc plus légère.
 
-En comparaison, l'objet "arguments" prends soit tout les paramètres soit aucun. Il n'est pas utilisable dans les arrow functions et se révèle moins performant que le rest parameter.
+En comparaison, l'objet "arguments" prends soit tout les paramètres soit aucun. Il n'est pas utilisable dans les arrow functions et se révèle moins performant et moins scalable que le rest parameter.
 
-**Note **:  Lorsque le rest parameter est utilisé avec une fonction, l'objet arguments n'est plus disponible à l'intérieur de celle-ci.
+**Note**:  Lorsque le rest parameter est utilisé avec une fonction, l'objet arguments n'est plus disponible à l'intérieur de celle-ci.
+
+**[⬆ Retour en haut](#table-des-matières)**
