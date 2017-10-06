@@ -37,11 +37,12 @@ Décomposition, Spread Operator & rest parameter en ES6
       * [Le rest parameter](#le-rest-parameter)
             * [Exemple en ES5](#exemple-en-es5-1)
             * [Exemple en ES6](#exemple-en-es6-1)
+    * [Bibliographie](#bibliographie)
 
 Trois petits points
 -------------
 
-Les trois petits points (...) ne sont pas un opérateur commun en programmation contrairement au = ou au !. C'est ES2015 ou ES6 qui a ajouté cet opérateur à la syntaxe de Javascript et c'est clairement un bonne chose.
+Les trois petits points (...) ne sont pas un opérateur commun en programmation contrairement au = ou au !. C'est ES2015 ou ES6 qui a ajouté cet opérateur à la syntaxe de Javascript et c'est clairement un bonne chose.[<sup>*</sup>](#bibliographie)
 
 Les trois petits points sont en fait deux choses distinctes, le **rest parameter** et le **spread operator.**
 
@@ -54,12 +55,12 @@ La **décomposition** consiste à "décomposer" les structures complexes (tablea
 Chaque itérable (c'est à dire chaque objet global auquel on peut appliquer la méthode length) peut être décomposer (destructuré).
 L'intérêt en ES6 est de rendre ce genre de manipulation plus **simple**, le code plus **lisible** et **scalable**.
 
-Pour chaque exemple nous allons vous montrer une comparaison entre la syntaxe en **ES5** et en **ES6**.
+Pour chaque exemple nous allons vous montrer une comparaison entre la syntaxe en **ES5** et en **ES6**.[<sup>*</sup>](#bibliographie)
 
 ## Décomposition d'un tableau
 -------------
 
-### Comment assigner les variables d'un tableau à des varaibles ?
+### Comment assigner les valeurs d'un tableau à des variables ?
 
 ##### **ES5**
 
@@ -85,7 +86,7 @@ const [chien, chat, cheval, singe] = animals
 console.log(chien, chat, cheval) // Hugo Enora Renan
 ```
 
-Le résultat est le même mais avec la décomposition on gagne en **rapidité d'exécution** et en **lisibilité**.
+Le résultat est le même mais avec la décomposition on gagne en **rapidité d'exécution** et en **lisibilité**.[<sup>*</sup>](#bibliographie)
 
 **[⬆ Retour en haut](#table-des-matières)**
 
@@ -113,7 +114,7 @@ const [chien,,, singe] = animals
 ```
 **[⬆ Retour en haut](#table-des-matières)**
 
-### Comment assigner les valeurs d'un tablau à des variables avec des valeurs par défault ?
+### Comment assigner les valeurs d'un tableau à des variables avec des valeurs par défault ?
 
 ##### **ES5**
 ```
@@ -123,6 +124,9 @@ var chien = typeof animals[0] == 'undefined' ? 'Hugo' : animals[0];
 var chat = typeof animals[1] == 'undefined' ? 'Enora' : animals[1];
 var singe = typeof animals[2] == 'undefined' ? 'Theo' : animals[2];
 
+// Ici je vérifie si les valeurs du tableau sont undefined ou non, si elles le sont,
+// on assigne une valeur par default.
+
 console.log(chien, chat, singe); // François Arthur Theo
 ```
 
@@ -131,6 +135,8 @@ console.log(chien, chat, singe); // François Arthur Theo
 ```
 const animals = ['François', 'Arthur']
 const [chien = 'Hugo', chat = 'Enora', singe = 'Theo'] = animals
+
+// Ici on met assigne directement les valeurs par default lors de l'assignation des variables.
 
 console.log(chien, chat, singe) // François, Arthur, Theo
 ```
@@ -181,7 +187,8 @@ console.log(friends);  // ['renan', 'hugo'] (inchangé)
   // method push
 
   var newFriends = ['theo', 'renan'];
-  Array.prototype.push.apply(friends, newFriends);
+
+  friends.push(newFriends);
   console.log(friends) // ['enora', 'hugo', 'theo', 'renan'];
 ```
 
@@ -189,7 +196,8 @@ console.log(friends);  // ['renan', 'hugo'] (inchangé)
   // method unshift
 
   var friendly = ['daniel', 'christopher'];
-  Array.prototype.unshift.apply(friends, friendly);
+
+  friends.push(friendly);
   console.log(friends) // ['daniel', 'christopher', 'enora', 'hugo', 'theo', 'renan'];
 ```
 
@@ -291,7 +299,7 @@ console.log(singes) // ['Enora', 'Renan', 'Theo']
 **[⬆ Retour en haut](#table-des-matières)**
 
 
-### Attention au scope de la décomposition
+### Attention au scope de la décomposition [<sup>*</sup>](#bibliographie)
 
 Lorsqu'on utilise la décomposition, par exemple pour copier un tableau, elle ne s'applique qu'au premier niveau de profondeur.
 C'est à dire que la décomposition n'est pas effective sur des tableaux qui seraient présent à l'interieur de notre tableau copié.
@@ -319,7 +327,7 @@ En ES5 le problème persistera car même avec la method Object.assign(), on obti
 ## La décomposition des objets
 -------------
 
-La décomposition des objets est relativement la même que celle des tableaux avec quelques spécificités supplémentaires. La principale difference entre ES5 et ES6 est **la syntaxe qui est simplifiée en ES6**.
+La décomposition des objets est relativement la même que celle des tableaux avec quelques spécificités supplémentaires. La principale difference entre ES5 et ES6 est **la syntaxe qui est simplifiée en ES6**.[<sup>*</sup>](#bibliographie)
 
 #### Exemple en ES5
 
@@ -362,10 +370,10 @@ UX // 14
 **[⬆ Retour en haut](#table-des-matières)**
 
 
-## Le rest parameter
+## Le rest parameter [<sup>*</sup>](#bibliographie)
 -------------
 
-**Le rest parameter** sert à stocker une liste indéfinie de valeurs sous forme de tableau. On dit paramètre de reste car il est passé en paramètre d'une fonction. Il est possible de ne pas insérer tous les arguments dans le paramètre rest.
+**Le rest parameter** sert à stocker une liste indéfinie de valeurs sous forme de tableau. On dit paramètre de reste car il est passé en paramètre d'une fonction. Il est possible de ne pas insérer tous les arguments dans le paramètre rest.[<sup>*</sup>](#bibliographie)
 
 L'intérêt de cet opérateur : **assembler plusieurs valeurs dans un tableau.**
 
@@ -408,5 +416,29 @@ Qu'on écrive en ES5 ou ES6, le résultat est le même mais la syntaxe est diff�
 En comparaison, l'objet "arguments" prends soit tout les paramètres soit aucun. Il n'est pas utilisable dans les arrow functions et se révèle moins performant et moins scalable que le rest parameter.
 
 **Note**:  Lorsque le rest parameter est utilisé avec une fonction, l'objet arguments n'est plus disponible à l'intérieur de celle-ci.
+
+**[⬆ Retour en haut](#table-des-matières)**
+
+
+
+Bibliographie
+===================
+
+[https://blog.nathanaelcherrier.com/2016/11/23/decomposition-et-destructuration-en-javascript/](https://blog.nathanaelcherrier.com/2016/11/23/decomposition-et-destructuration-en-javascript/)
+
+[http://putaindecode.io/fr/articles/js/es2015/destructuring/](http://putaindecode.io/fr/articles/js/es2015/destructuring/)
+
+[https://blog.nathanaelcherrier.com/2016/11/09/rest-parameter-et-spread-operator-en-javascript/](https://blog.nathanaelcherrier.com/2016/11/09/rest-parameter-et-spread-operator-en-javascript/)
+
+[http://putaindecode.io/fr/articles/js/es2015/rest-spread/](http://putaindecode.io/fr/articles/js/es2015/rest-spread/)
+
+[https://msdn.microsoft.com/fr-fr/library/dn919259%28v=vs.94%29.aspx](https://msdn.microsoft.com/fr-fr/library/dn919259%28v=vs.94%29.aspx)
+
+[https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Affecter_par_d%C3%A9composition](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Affecter_par_d%C3%A9composition)
+
+[https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Op%C3%A9rateur_de_d%C3%A9composition](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Op%C3%A9rateur_de_d%C3%A9composition)
+
+[https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/assign](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/assign)
+
 
 **[⬆ Retour en haut](#table-des-matières)**
